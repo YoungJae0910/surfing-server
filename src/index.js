@@ -1,6 +1,26 @@
-// "Create React App" tooling expects to find the WWW root here,
-// so we simply use this file to import the ./www directory.
-//
-// For the backend, we set the container's entrypoint to src/api/index.js
+const express = require("express")
+const cors = require("cors")
+const server = express()
 
-module.exports = require("./www")
+const port = 5000
+
+server.use(
+    cors({
+        origin: "http://localhost:3000"
+    })
+)
+
+server.get("/", (request, response, next) => {
+    response.json({
+        test: "success"
+    })
+})
+
+server.listen(port, error => {
+    if (error) {
+        console.log("ERROR: " + error)
+        return
+    }
+
+    console.log("Server is running on port " + port)
+})
