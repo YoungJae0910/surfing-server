@@ -3,4 +3,4 @@
 //
 // For the backend, we set the container's entrypoint to src/api/index.js
 
-module.exports = require('./www')
+module.exports = require("./www")
